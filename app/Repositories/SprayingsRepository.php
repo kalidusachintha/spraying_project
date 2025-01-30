@@ -55,16 +55,6 @@ class SprayingsRepository implements SprayingInterface
     }
 
     /**
-     * Delete Spraying
-     * @param Spraying $spraying
-     * @return void
-     */
-    public function delete(Spraying $spraying): void
-    {
-        $spraying->delete();
-    }
-
-    /**
      * Find a spraying by id
      * @param int $id
      * @return Spraying
@@ -74,4 +64,16 @@ class SprayingsRepository implements SprayingInterface
         return Spraying::findOrFail($id);
     }
 
+    /**
+     * Delete spraying records
+     * @param array $data
+     * @return int
+     */
+    public function deleteByCommentAndDate(array $data): int
+    {
+        return DB::table('sprayings')
+            ->where('comment', $data['comment'])
+            ->where('date', $data['date'])
+            ->delete();
+    }
 }

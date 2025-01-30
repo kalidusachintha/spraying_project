@@ -61,11 +61,10 @@ class SprayingsService
      * @param int $id
      * @return bool
      */
-    public function deleteSpraying(int $id): bool
+    public function deleteSpraying(array $data): bool
     {
         try{
-            $spraying = $this->repository->findById($id);
-            return $this->repository->delete($spraying);
+            return $this->repository->deleteByCommentAndDate($data);
         } catch (\Throwable $e) {
             return false;
         }

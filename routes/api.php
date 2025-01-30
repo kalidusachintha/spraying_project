@@ -8,8 +8,9 @@ use App\Http\Controllers\Api\AuthTokenController;
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/createtoken', [AuthTokenController::class, 'getToken']);
 
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
     Route::post('/revoke', [AuthTokenController::class, 'revokeToken']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::delete('/sprayings/delete', [SprayingsController::class, 'destroy']);
     Route::resource('/sprayings', SprayingsController::class);
-});
+//});

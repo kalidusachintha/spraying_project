@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSprayingRequest;
 use App\Http\Requests\UpdateSprayingRequest;
 use App\Http\Resources\SprayingResource;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Services\SprayingsService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -67,12 +68,12 @@ class SprayingsController extends Controller
 
     /**
      * Delete a Spraying
-     * @param $id
+     * @param Request $data
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy(Request $data): JsonResponse
     {
-        $spraying = $this->service->deleteSpraying($id);
+        $spraying = $this->service->deleteSpraying($data->toArray());
 
         if (!$spraying) {
             return response()->json(['errors' => 'Spraying deleted failed'], Response::HTTP_UNPROCESSABLE_ENTITY);
