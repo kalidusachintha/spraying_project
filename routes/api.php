@@ -14,3 +14,4 @@ Route::post('/createtoken', [AuthTokenController::class, 'getToken']);
     Route::delete('/sprayings/delete', [SprayingsController::class, 'destroy']);
     Route::resource('/sprayings', SprayingsController::class);
 //});
+
