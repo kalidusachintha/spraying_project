@@ -43,7 +43,7 @@ class SprayingsController extends Controller
     public function store(StoreSprayingRequest $request): JsonResponse
     {
         $data = $request->only(['comment', 'date', 'products']);
-        $data['created_by'] = $request->user()->id;
+        $data['created_by'] = 1; // adding this as a temporary solution since the authentication is not working properly
         $spraying = $this->service->createSpraying($data);
         return response()->json($spraying, Response::HTTP_CREATED);
     }
