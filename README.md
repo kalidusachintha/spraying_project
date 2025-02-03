@@ -5,4 +5,3 @@
 - Create a database and update the .env file
 - Run **composer install**
 - Run **php artisan migrate --seed**
-
